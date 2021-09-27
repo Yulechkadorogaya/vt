@@ -1,1 +1,27 @@
 header{background-color: darksalmon;}
+.table{background-color: rgb(255, 245, 233)};
+.red{background-color: darkslateblue};
+td{background-color: darkslategrey;}
+.table {
+	width: 100%;
+	margin-bottom: 20px;
+	border: 15px solid rgb(163, 113, 243);
+	border-top: 5px solid rgb(220, 182, 252);
+	border-collapse: collapse; 
+}
+.table th {
+    font-weight: bold;
+    font-size: 30px;
+	padding: 35px;
+	background: rgb(255, 0, 221);
+	border: none;
+	border-bottom: 5px solid rgb(238, 155, 231);
+}
+.table td {
+    font-size: 20px;
+    text-align: center;
+
+	padding: 5px;
+	border: none;
+	border-bottom: 5px solid rgb(251, 236, 255);
+}
