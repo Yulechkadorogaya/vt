@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <style>
+        .block{
+            border: 2px solid rgb(153, 0, 255); 
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            background-size: cover;
+        }
+        .container{
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 50px;
+            background: rgb(130, 230, 255);
+            text-align: center;
+            color: rgb(102, 3, 3);
+        }
+        .mini{
+            width: 256px;
+        }
+        .container1{
+            width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+            background: rgb(31, 243, 144);
+            text-align: center;
+            color: rgb(102, 3, 3);
+        }
+        .slider{
+            border: salmon;
+            width: 256px;
+            height: 256px;
+            margin: 20 auto;
+        }
+        .slider-line{
+            display: flex;
+            height: 256px;
+            width: 1024px;
+            background: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="block"></div>
+        <script>
+            var arr=['1.jpg','2.jpg','3.jpg','4.jpg','5.jpg'],
+            block=document.querySelector('.block'),
+            i=0;
+            block.onclick = boo;
+            boo();
+            function boo(){
+                block.style.backgroundImage='url(Images/'+arr[i]+')';
+                i++;
+
+                if (i==arr.length){
+                    i=0;
+                }
+            }            
+        </script>
+    </section>
+    <section>
+        <div class="container">
+            <div id="big">
+                <img src="Images/1.jpg" alt="" width="900" id="bigp" class="bigp">
+            </div>
+    <div>
+            <img src="Images/2.jpg" alt="" width="300" class="smallp">
+            <img src="Images/3.jpg" alt="" width="300" class="smallp">
+            <img src="Images/4.jpg" alt="" width="300" class="smallp">
+    </div>
+        </div>
+        <script>
+            let el = document.getElementsByClassName('smallp');
+            for (i=0; i<el.length; i++){
+                 el[i].onclick = pic
+            }
+            function pic(event){
+                x=document.getElementById("bigp");
+                x.src = event.target.src;
+            }
+        </script>
+    </section>
+    <section>
+        <div class="container1">
+            <div class="slider">
+                <div class="slider-line">
+                    <img src="Images/1.jpg" alt="" class="mini">
+                    <img src="Images/2.jpg" alt="" class="mini">
+                    <img src="Images/3.jpg" alt="" class="mini">
+                    <img src="Images/4.jpg" alt="" class="mini">
+                </div>
+            </div>
+            <button class="slider-prev">НАЗАД</button>
+            <button class="slider-next">ВПЕРЁД</button>
+        </div>
+        <script>
+let offset = 0;
+const sliderLine = document.querySelector('.slider-line');
+        </script>
+    </section>
+</body>
+</html>

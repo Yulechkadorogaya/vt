@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet">
+    <title>js</title>
+</head>
+<body>
+
+
+
+    <header>
+        <h1>School</h1>
+        <nav>
+       <ul>
+           <li><a href=""><img src="img/img.jpg" alt="logo" height="150"> </a>
+           </li>
+           <li><a href="pages/about.me.html ">О себе </a>   </li>
+           <li>
+               <a href="pages/rezume.html">Резюме</a>
+           </li>
+           <li>
+               <a href="pages/Portfolio.html">Портфолио</a>
+           </li>
+           <li>
+               <a href="pages/Kompetentii.html">Компетенции</a>
+           </li>
+           <li>
+               <a href="pages/Kontakti.html">Контакты</a>
+           </li>
+       </ul>
+           
+        </nav>
+   
+   </header> 
+
+ <main class="main1">
+    <div>
+        <div>выберите цветовую тему</div>
+        <select name="" id="theme">
+            <option value="auto">По умолчанию</option>
+            <option value="light">Светлая</option>
+            <option value="dark">Тёмная</option>
+        </select>
+        <script>
+            function applyTheme(theme){
+                document.body.classList.remove("theme-auto","theme-light","theme-dark");
+                document.body.classList.add(`theme-${theme}`);
+            }
+            
+            document.addEventListener("DOMContentLoaded",() =>{
+                document.querySelector("#theme").addEventListener("change",function (){
+                    applyTheme(this.value);
+                });
+            });
+
+            document.addEventListener("DOMContentLoaded",() =>{
+                const savedTheme = localStorage.getItem("theme") || "auto";
+                    applyTheme(savedTheme);
+                    for(const optionElement of document.querySelectorAll("#theme option")){
+                        optionElement.selected = savedTheme === optionElement.value;
+                    }
+                    document.querySelector("#theme").addEventListener("change",function (){
+                        localStorage.setItem("theme", this.value);
+                        applyTheme(this.value);
+                });
+            });
+
+        </script>
+    </div>
+
+
+    <div class="grid-container">
+        <div class="main-form">
+        
+        <div class="noselect">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, alias! Iste accusantium placeat, porro maxime voluptates harum fuga architecto nihil suscipit dolor distinctio vel fugiat consequuntur, ab provident, expedita natus?
+            </div>
+            <div>
+                <img src="../Images/sotka.jpg" alt="">
+            </div>
+        </div>
+        <div class="main-form">
+            <textarea name="" id="textarea" cols="30" rows="10"></textarea><br>
+            <button>Кнопка</button>
+            <script>
+                document.getElementById("textarea").oninput=function text(){
+                    localStorage.setItem('savetext', document.getElementById("textarea").value);
+                }
+                document.getElementById("textarea").value=localStorage.getItem("savetext");
+            </script>
+        </div>
+        <div class="main-form"></div>
+        <div class="main-form"></div>
+        <div class="main-form"></div>
+    </div>
+    <section>
+        <h1>хранение localStorage</h1>
+        <div class="out"></div>
+
+    </section>
+ </main>
+ <footer>
+    <div>
+        Ну все, пока. Всего хорошего!
+        
+    </div>
+    <div>
+        <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+    
+    </footer>
+    <script>
+        localStorage.setItem('data',6);
+        console.log(localStorage.getItem('data'));
+
+        const a = [4,5,6,7];
+        localStorage.setItem('a',JSON.stringify(a));
+        let b = localStorage.getItem('a');
+        b=JSON.parse(b);
+        console.log(b);
+        console.log(b[0]);
+        console.log(b[1]);
+        console.log(typeof b);
+
+        const c = {
+            hello:5,
+            k:4,
+            4:'hi'
+        };
+        localStorage.setItem('c',JSON.stringify(c));
+        let d = localStorage.getItem('c');
+        d=JSON.parse(d);
+        console.log(d);
+        console.log(typeof d);
+
+        window.addEventListener('storage',function(e){
+            console.log('change');
+            document.querySelector('.out').textContent = localStorage.getItem('b1');
+        });
+
+    </script>
+</body>
+</html>

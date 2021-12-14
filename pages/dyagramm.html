@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet">
+    <title>dyagramm</title>
+
+
+
+</head>
+<body>
+    <section class="chart">
+    <h1 class="chart_title">популярность языков программирования</h1>
+    <form action="#" class="chart_data">
+            <div class="chart_input-group">
+                <label for="javascript" class="chart_label">javascript</label>
+            <input type="number" name="javascript" id="javascript" min="0" max="100" required>
+            </div>
+            <div class="chart_input-group">
+                <label for="php" class="chart_label">php</label>
+            <input type="number" name="php" id="php" min="0" max="100" required>
+            </div>
+            <div class="chart_input-group">
+                <label for="python" class="chart_label">python</label>
+            <input type="number" name="python" id="python" min="0" max="100" required>
+            </div>
+        <input type="submit" class="chart_submit-button input-field" value="Показать график">
+    </form>
+    <div class="chart_canvas-wrapper">
+        <canvas id="canvas" width="500" height="250">Браузер не поддерживает элемент Canvas</canvas>
+    </div>
+    </section>
+</body>
+    <script>
+        const COLORS =[
+            `#53d5fc`,
+            `#111111`,
+            `#fff653`
+        ];
+        const MAX_PERCENTAGE =100;
+        const BarSize = {
+            MAX_HEIGHT: 190,
+            WIDTH: 50
+        };
+        const Font = {
+            SIZE: `15px`,
+            FAMILY: `Calibri`
+        };
+        const BarCoordinate = {
+            INITIAL_X: 80,
+            INITIAL_Y: 220
+        };
+
+        const labelCoordinate = {
+            INITIAL_X: 30,
+            INITIAL_Y: 70
+        };
+
+        const gap ={
+            HORIZONTAL: 100,
+            VERTICAL:30
+        };
+            const formElement = document.querySelector(`.chart_data`);
+        const inputElements = document.querySelectorAll(`.chart_input`);
+        
+        const getData = (inputElements) =>{
+            return Array.from(inputElements).map((input, index) =>({
+                name: input.name,
+                value: input.value,
+                color: COLORS[index]
+            }))
+        };
+
+        const canvas = document.querySelector(`#canvas`);
+        const ctx = canvas.getContext(`2d`);
+
+        const renderChart = (items) =>{
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+
+            let currentLabelY = labelCoordinate.INITIAL_Y;
+            let currentBarX = BarCoordinate.INITIAL_X;
+            const gapBetweenBars = BarSize.WIDTH + gap.HORIZONTAL;
+            for (const item of items) {
+                const barHeight = (item.value * BarSize.MAX_HEIGHT) / MAX_PERCENTAGE;
+                ctx.fillStyle = item.color;
+                ctx.font = `${Font.SIZE} ${Font.FAMILY}`;
+                ctx.save();
+                ctx.translate(0, canvas.height);
+                ctx.rotate(-Math.PI/2);
+                ctx.fillText(item.name.toUpperCase(),labelCoordinate.INITIAL_X, currentLabelY);
+                ctx.restore();
+                ctx.fillRect(currentBarX, BarCoordinate.INITIAL_Y, BarSize.WIDTH, -barHeight);
+                currentBarX += gapBetweenBars;
+                currentLabelY += gapBetweenBars;
+            }
+        };
+        formElement.addEventListener(`submit`, (evt) =>{
+            evt.preventDeafault();
+            renderChart(getData(inputElements));
+            formElement.reset();
+        });
+
+    </script>
+</html>

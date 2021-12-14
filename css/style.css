@@ -1,7 +1,55 @@
-header{background-color: darksalmon;}
-.table{background-color: rgb(255, 245, 233)};
-.red{background-color: darkslateblue};
-td{background-color: darkslategrey;}
+header {background-color: rgb(182, 252, 248);}
+.main {background-color: pink}
+.sec {background-color: rgb(255, 226, 172);}
+.header_wraper 
+{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.header_logo
+{
+	flex-basis: 20%;
+}
+.header_menu
+{
+	display: flex;
+	flex-wrap: wrap;
+}
+.header_item
+{
+	margin-right: 30px;
+}
+.header_item :last-child
+{
+	margin-right: 0;
+}
+.footer_warper
+{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.footer_br 
+{
+	margin-left: 30px;
+}
+.footer_item 
+{
+	margin-right: 20%;
+}
+.htmlcards
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 20%);
+}
+.cards
+{
+	grid-column: span 1;
+	margin-bottom: 10px;
+}
 .table {
 	width: 100%;
 	margin-bottom: 20px;
@@ -24,4 +72,61 @@ td{background-color: darkslategrey;}
 	padding: 5px;
 	border: none;
 	border-bottom: 5px solid rgb(251, 236, 255);
+}
+.table tbody tr:nth-child(even){
+	background: #f8f8f8!important;
+}
+.jod {background-color: deeppink;}
+.grid-container{
+display: grid;
+justify-content: center;
+grid-template-rows: 1fr 1fr 1fr;
+grid-template-columns: 1fr 1fr;
+grid-gap: 2vw;
+justify-items: center;
+margin-top: 20px;
+padding-top: 200px;
+}
+.main-form{
+	width: 77%;
+	border:5px solid rebeccapurple;
+	padding: 40px;
+	border-radius: 40px;
+	box-shadow: black;
+}
+/* Текст не выделяется */
+.noselect{
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+html{box-sizing: border-box;}
+body{
+	font-family: 'Alegoreya Sans SC';
+	font-style: normal;
+	font-size: 18px;
+	line-height: normal;
+	font-weight: normal;
+	--background-color: rgb(255, 255, 255);
+	--text-color: black;
+}
+main{
+	background: var(--background-color);
+	color: var(--text-color);
+}
+:root{
+	--dark-background-color: black;
+	--dark-text-color:white;
+}
+body.theme-dark{
+	--background-color: var(--dark-background-color);
+	--text-color:var(--dark-text-color);
+}
+@media (prefers-color-scheme: dark) {
+	body.theme-auto{
+		--background-color: var(--dark-background-color);
+		--text-color:var(--dark-text-color);
+	}
 }

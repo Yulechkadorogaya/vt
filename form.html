@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма</title>
+    <style>
+    body 
+    { 
+        font-family: 'Bona Nova';
+    display: grid;
+    grid-template-areas: 
+        "header header header"
+        "left middle right"
+        "footer footer footer";
+    grid-template-rows: 60px 1fr 60px;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 100vh;
+    }
+    header 
+    {
+    grid-area: header;
+    background-color: #cc00ff;
+    color: #fef3d5;
+    }
+    footer 
+    {
+    grid-area: footer;
+    background-color: #cc00ff;
+    color: #fef3d5;
+    }
+
+    .flex-col
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .border_div
+    {
+        border: solid 1px #cc00ff;
+        border-radius: 100px;
+        padding: 50px;
+        margin: 20px;
+        box-shadow: 1px 1px 6px 3px #cc00ff;
+    }
+
+    .middle 
+    { 
+    grid-area: middle;  
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border: solid 1px #cc00ff;
+        border-radius: 100px;
+        padding: 50px;
+        margin: 20px;
+        box-shadow: 1px 1px 6px 3px #cc00ff
+    }    
+
+    .left 
+        { 
+        grid-area: left; 
+        }
+        .right
+        { 
+        grid-area: right; 
+        }
+
+        .form-div
+    {
+        padding-bottom: 20px;
+    }
+    .flex-row
+    {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .align-center
+    {
+        text-align: center;
+    }
+
+    .input-text
+    {
+    border-radius: 10px;
+    background-color: #fef3d5;
+    border-color: #f28a31;
+    width: 160px;
+    height: 30px;
+    }
+
+    </style>
+
+    <script>
+function checkForm(el)
+{
+      console.log("Проверка");
+
+
+/* var fail = "";
+var viv = name.value + email.value + tel.value;
+if (name1 == ""|| email == ""|| tel == "")
+fail="заполните все поля";
+else if(name1.length <=1||name1.length>50)
+fail="Введите корректное имя!";
+else if(email.conteins("1")){
+fail="Введите корректный email!"
+}
+if (fail == ""){
+    document.getElementById('error').innerHTML = fail;
+    return false;
+} 
+   
+   else {document.getElementById('vivod').innerHTML = viv;
+   return false;
+    }    */
+}
+    </script>
+    <script>
+        function f4(){
+            document.getElementById('posta').checked=true
+            document.getElementById('tel').checked=true
+            document.getElementById('tel posta').checked=true
+        }
+    </script>
+
+</head>
+<body>
+    <header>
+        <h1>School</h1>
+        <nav>
+       <ul>
+           <li><a href=""><img src="img\img.jpg" alt="logo" height="150"> </a>
+           </li>
+           <li><a href="pages\about me.html ">О себе </a>   </li>
+           <li>
+               <a href="pages\rezume.html">Резюме</a>
+           </li>
+           <li>
+               <a href="pages\Portfolio.html">Портфолио</a>
+           </li>
+           <li>
+               <a href="pages\Kompetentii.html">Компетенции</a>
+           </li>
+           <li>
+               <a href="pages\Kontakti.html">Контакты</a>
+           </li>
+       </ul>
+           
+        </nav>
+   
+   </header> 
+    <main>
+        <div class="left"></div>
+        <div class="middle">
+    <form action="" method="get" id="form1" onsubmit="return checkForm(this)">
+    <div class="form-div" id="svaz">
+    <div>Как вам удобно занести ответ:</div>
+        <label for=""><input type="radio" id="posta" value="по почте">по почте</label><br>
+        <label for=""><input type="radio" id="tele" value="по телефону">по телефону</label><br>
+        <label for=""><input type="radio" id="nocomment" value="не отвечать">не отвечать</label><br>
+    </div>
+    <div class="form-div">
+        <label for="theme">Укажите тему вопроса</label><br>
+        <select name="theme" id="theme" class="input-text">
+            <option value="rabota">работа</option>
+            <option value="sotr">сотрудничество</option>
+            <option value="lich">личное</option>
+        </select>
+    </div>
+    <div class="form-div">
+        <div>Ещё вопрос</div>
+        <label for="checkbox1"><input type="checkbox" id="checkbox">может так</label><br>
+        <label for="checkbox1"><input type="checkbox" id="checkbox">или не так</label><br>
+        <label for="checkbox1"><input type="checkbox" id="checkbox">а может и так</label><br>
+    </div>
+    <div class="form-div">
+        <label for="name" class="flex-row">Ваше имя</label>
+        <input type="text" name="name1" id="name1" class="input-text">
+    </div>
+    <div class="form-div" id="email1">
+        <label for="email" class="flex-row">Адресс почты</label>
+        <input type="email" name="email" id="email" class="input-text">
+    </div>
+    <div class="form-div" id="tel1">
+        <label for="tel" class="flex-row">Телефон</label>
+        <input type="tel" name="tel" id="tel" class="input-text">
+    </div>
+    <div class="form-div">
+        <div>Задайте вопрос</div>
+        <div>
+            <textarea cols="30"></textarea>
+        </div>
+    </div>
+
+    <div class="align-center">
+        <input type="submit" value="Отправить вопрос" class="input-text">
+    </div>
+    <div id="error" style="color: red;"> </div>
+    <div id="vivod" style="color: green;"> </div>
+    </form>
+    </div>
+    <div class="right"></div>
+    </main>
+    <footer>
+        <div>
+            Ну все, пока. Всего хорошего!
+            
+        </div>
+        <div>
+            <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        
+        </footer>
+    <!-- <script>
+        document.getElementById('posta').addEventListener("click", f2);
+        function f2(){
+            let x =document.getElementById('tel1');
+            if (x.style.display == "none"){
+                x.style.display ="block";
+            }
+            else {
+                x.style.display = "none";
+            }
+        }
+    </script> -->
+
+    <script>
+        document.getElementById('svaz').addEventListener('click',f3)
+        function f3() {
+            let x =document.getElementById('tel1');
+            let y =document.getElementById('email1');
+            let z =document.getElementById('tel1 email1');
+            if(document.getElementById('posta').checked){
+                y.style.visibility = "visible";
+            } else{
+                y.style.visibility = "hidden"}
+                if(document.getElementById('posta').checked){
+                y.style.visibility = "visible";
+            } else{
+                y.style.visibility = "hidden"}
+
+        }
+
+    </script>
+</body>
+</html>
